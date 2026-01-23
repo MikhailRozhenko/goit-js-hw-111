@@ -35,25 +35,24 @@ refs.form.addEventListener('submit', event => {
 
   clearGallery();
   showLoader();
-  setTimeout(() => {
-    getImagesByQuery(input)
-      .then(data => {
-        if (!data || data.hits.length === 0) {
-          showError(
-            'Sorry, there are no images matching your search query. Please try again!'
-          );
-          return;
-        }
 
-        return data;
-      })
-      .then(data => {
-        if (data) {
-          createGallery(data.hits);
-        }
-      })
-      .finally(() => {
-        hideLoader();
-      });
-  }, 4000);
+  getImagesByQuery(input)
+    .then(data => {
+      if (!data || data.hits.length === 0) {
+        showError(
+          'Sorry, there are no images matching your search query. Please try again!'
+        );
+        return;
+      }
+
+      return data;
+    })
+    .then(data => {
+      if (data) {
+        createGallery(data.hits);
+      }
+    })
+    .finally(() => {
+      hideLoader();
+    });
 });

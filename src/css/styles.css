@@ -17,180 +17,114 @@
 @import url('./back-link.css');
 @import url('./footer.css');
 
+/* RESET */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* BODY */
 body {
+  margin: 0;
   min-height: 100vh;
-  background: linear-gradient(180deg, #f9fafb 0%, #eef2f7 100%);
   font-family: 'Inter', system-ui, sans-serif;
-  display: flex;
-  align-items: center;
+  background: radial-gradient(circle at top, #0f172a, #020617 70%);
+  color: #e5e7eb;
 
   display: flex;
   flex-direction: column;
-  min-width: 100vw;
-  min-height: 100vh;
-  margin: 0;
+  align-items: center;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-}
-
-/* форма */
+/* FORM */
 .form {
+  margin-top: 32px;
+  padding: 18px 22px;
   display: flex;
-  gap: 14px;
-  padding: 20px 24px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(14px);
-  border-radius: 18px;
+  gap: 16px;
+
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 20px;
   box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.6),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.12);
-  margin-top: 28px;
+    0 0 30px rgba(56, 189, 248, 0.25),
+    inset 0 0 0 1px rgba(56, 189, 248, 0.25);
 }
 
+/* INPUT — НЕОН */
 .form input {
-  width: 300px;
+  width: 320px;
   padding: 14px 18px;
-  font-size: 16px;
-  color: black;
-  background: #f8fafc;
-  border: none;
+
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  color: #67e8f9;
+
+  background: #020617;
+  border: 1px solid #0ea5e9;
   border-radius: 14px;
   outline: none;
+
   box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
-    inset 0 0 20px rgba(79, 70, 229, 0.25);
-  transition:
-    box-shadow 0.35s ease,
-    transform 0.25s ease;
+    inset 0 0 15px rgba(14, 165, 233, 0.35),
+    0 0 12px rgba(14, 165, 233, 0.25);
+
+  transition: 0.25s ease;
 }
 
 .form input::placeholder {
-  color: #9ca3af;
+  color: #38bdf8;
+  opacity: 0.6;
 }
 
 .form input:focus {
-  transform: translateY(-1px);
   box-shadow:
-    inset 0 0 0 1px rgba(99, 102, 241, 0.7),
-    0 0 25px rgba(99, 102, 241, 0.6);
+    inset 0 0 20px rgba(34, 211, 238, 0.7),
+    0 0 20px rgba(34, 211, 238, 0.7);
 }
 
+/* BUTTON — КИБЕР */
 .form button {
-  position: relative;
-  padding: 14px 28px;
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  color: #fff;
-  background: linear-gradient(135deg, #6366f1, #22d3ee);
+  padding: 14px 34px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 2px;
+
+  color: #020617;
+  background: linear-gradient(135deg, #22d3ee, #38bdf8);
   border: none;
   border-radius: 14px;
   cursor: pointer;
-  overflow: hidden;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-  box-shadow: 0 12px 30px rgba(99, 102, 241, 0.55);
-}
 
-.form button::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #22d3ee, #6366f1);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 1;
-}
+  box-shadow:
+    0 0 25px rgba(34, 211, 238, 0.8),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4);
 
-.form button:hover::before {
-  opacity: 1;
+  transition: 0.25s ease;
 }
 
 .form button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 18px 45px rgba(34, 211, 238, 0.6);
+  box-shadow: 0 0 40px rgba(34, 211, 238, 1);
 }
 
 .form button:active {
   transform: scale(0.95);
 }
 
-.form button span {
-  position: relative;
-  z-index: 2;
-}
-
-.form button span:hover {
-  color: burlywood;
-}
-
-/* Общий контейнер галереи */
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  width: auto;
-  justify-content: flex-start;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-/* Каждая карточка */
-.gallery-item {
-  flex: 0 0 250px; /* фиксированная ширина, не растягивается */
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.2s;
-}
-
-.gallery-item:hover {
-  transform: scale(1.03);
-}
-
-/* Ссылка на большое изображение */
-.gallery-link {
-  display: block;
-}
-
-/* Изображение в карточке */
-.gallery-image {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* Блок с инфой под картинкой */
-.info {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 10px;
-  font-size: 12px;
-  background-color: #f9f9f9;
-  gap: 10px;
-}
-
-.info-item {
-  text-align: center;
-  flex: 1;
-}
-
+/* LOADER */
 .loader {
-  display: block;
-  margin-top: 20px;
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid #3f51b5;
-  border-radius: 50%;
+  margin: 30px 0;
   width: 48px;
   height: 48px;
-  animation: spin 1s linear infinite;
+  border: 6px solid rgba(56, 189, 248, 0.2);
+  border-top: 6px solid #22d3ee;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.loader.hidden {
+  display: none;
 }
 
 @keyframes spin {
@@ -199,18 +133,73 @@ body {
   }
 }
 
-.load-more {
-  display: block;
-  margin: 20px auto;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  background: #4e75ff;
-  color: #fff;
+/* CONTAINER */
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.loader.hidden {
-  display: none;
+/* GALLERY */
+.gallery {
+  width: 100vw;
+  padding: 24px 32px;
+  margin: 0;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+
+  list-style: none;
+}
+
+/* CARD */
+.gallery-item {
+  background: linear-gradient(180deg, #020617, #020617);
+  border-radius: 18px;
+  overflow: hidden;
+
+  box-shadow:
+    0 0 25px rgba(15, 23, 42, 0.9),
+    inset 0 0 0 1px rgba(56, 189, 248, 0.2);
+
+  transition: 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 0 35px rgba(34, 211, 238, 0.7);
+}
+
+/* IMAGE */
+.gallery-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+/* INFO */
+.info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  padding: 10px;
+
+  font-size: 11px;
+  text-transform: uppercase;
+
+  background: rgba(2, 6, 23, 0.9);
+}
+
+.info p {
+  margin: 0;
+  text-align: center;
+  color: #94a3b8;
+}
+
+.info b {
+  display: block;
+  color: #22d3ee;
+  font-size: 12px;
 }
