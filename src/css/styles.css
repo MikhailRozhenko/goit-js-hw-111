@@ -7,7 +7,7 @@
 /* Common styles */
 @import url('./reset.css');
 @import url('./base.css');
-@import url('./container.css');
+
 @import url('./animations.css');
 
 /* Sections style */
@@ -16,3 +16,201 @@
 @import url('./badges.css');
 @import url('./back-link.css');
 @import url('./footer.css');
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f9fafb 0%, #eef2f7 100%);
+  font-family: 'Inter', system-ui, sans-serif;
+  display: flex;
+  align-items: center;
+
+  display: flex;
+  flex-direction: column;
+  min-width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+/* форма */
+.form {
+  display: flex;
+  gap: 14px;
+  padding: 20px 24px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.6),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  margin-top: 28px;
+}
+
+.form input {
+  width: 300px;
+  padding: 14px 18px;
+  font-size: 16px;
+  color: black;
+  background: #f8fafc;
+  border: none;
+  border-radius: 14px;
+  outline: none;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 0 20px rgba(79, 70, 229, 0.25);
+  transition:
+    box-shadow 0.35s ease,
+    transform 0.25s ease;
+}
+
+.form input::placeholder {
+  color: #9ca3af;
+}
+
+.form input:focus {
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 0 0 1px rgba(99, 102, 241, 0.7),
+    0 0 25px rgba(99, 102, 241, 0.6);
+}
+
+.form button {
+  position: relative;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: #fff;
+  background: linear-gradient(135deg, #6366f1, #22d3ee);
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 12px 30px rgba(99, 102, 241, 0.55);
+}
+
+.form button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #22d3ee, #6366f1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.form button:hover::before {
+  opacity: 1;
+}
+
+.form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 45px rgba(34, 211, 238, 0.6);
+}
+
+.form button:active {
+  transform: scale(0.95);
+}
+
+.form button span {
+  position: relative;
+  z-index: 2;
+}
+
+.form button span:hover {
+  color: burlywood;
+}
+
+/* Общий контейнер галереи */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  width: auto;
+  justify-content: flex-start;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Каждая карточка */
+.gallery-item {
+  flex: 0 0 250px; /* фиксированная ширина, не растягивается */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.gallery-item:hover {
+  transform: scale(1.03);
+}
+
+/* Ссылка на большое изображение */
+.gallery-link {
+  display: block;
+}
+
+/* Изображение в карточке */
+.gallery-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Блок с инфой под картинкой */
+.info {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 10px;
+  font-size: 12px;
+  background-color: #f9f9f9;
+  gap: 10px;
+}
+
+.info-item {
+  text-align: center;
+  flex: 1;
+}
+
+.loader {
+  display: block;
+  margin-top: 20px;
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3f51b5;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.load-more {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #4e75ff;
+  color: #fff;
+}
+
+.loader.hidden {
+  display: none;
+}
