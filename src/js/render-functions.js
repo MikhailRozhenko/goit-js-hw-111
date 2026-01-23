@@ -1,4 +1,3 @@
-import { refs } from '../main';
 // Описаний у документації
 // Додатковий імпорт стилів
 import 'simplelightbox/dist/simple-lightbox.min.css';
@@ -6,6 +5,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 import SimpleLightbox from 'simplelightbox';
 // Додатковий імпорт стилів
 import 'simplelightbox/dist/simple-lightbox.min.css';
+import { refs } from './refs';
 
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
@@ -40,8 +40,8 @@ export function clearGallery() {
 }
 
 export function showLoader() {
-  refs.loaderForm.classList.add('hidden');
+  refs.loaderForm.classList.remove('hidden');
 }
 export function hideLoader() {
-  refs.loaderForm.classList.remove('hidden');
+  refs.loaderForm.classList.add('hidden');
 }

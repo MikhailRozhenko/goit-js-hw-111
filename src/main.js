@@ -3,20 +3,13 @@ import iziToast from 'izitoast';
 // Додатковий імпорт стилів
 import 'izitoast/dist/css/iziToast.min.css';
 import { getImagesByQuery } from './js/pixabay-api';
+import { refs } from './js/refs';
 import {
   clearGallery,
   createGallery,
   hideLoader,
   showLoader,
 } from './js/render-functions';
-
-export const refs = {
-  form: document.querySelector('.form'),
-  inputForm: document.querySelector('input[type="text"]'),
-  buttonForm: document.querySelector('button[type="submit"]'),
-  ulForm: document.querySelector('.gallery'),
-  loaderForm: document.querySelector('.loader'),
-};
 
 function showError(message) {
   iziToast.error({
@@ -41,7 +34,7 @@ refs.form.addEventListener('submit', event => {
   }
 
   clearGallery();
-
+  showLoader();
   setTimeout(() => {
     getImagesByQuery(input)
       .then(data => {
@@ -51,7 +44,7 @@ refs.form.addEventListener('submit', event => {
           );
           return;
         }
-        showLoader();
+
         return data;
       })
       .then(data => {
